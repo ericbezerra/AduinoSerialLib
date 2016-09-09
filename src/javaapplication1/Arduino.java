@@ -39,12 +39,18 @@ public class Arduino implements SerialPortEventListener{
     }
     
     public Arduino(String port, int bauldRate){
-        
         this.bauldRate = bauldRate;
         this.port = port;
     }
     
+    public void connect(String port, int bauldRate){
     
+    }
+    
+    public void digitalWrite(){System.out.println("Unimplemented Method");}
+    public void digitalRead(){System.out.println("Unimplemented Method");}
+    public void analogWrite(){System.out.println("Unimplemented Method");}
+    public void analogRead(){System.out.println("Unimplemented Method");}
     
     public String[] getPortList(){
         int i = 0;
