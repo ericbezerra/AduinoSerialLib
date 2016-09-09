@@ -1,4 +1,3 @@
-
 package br.com.shussantec.arduino;
 
 import gnu.io.CommPortIdentifier;
@@ -6,14 +5,23 @@ import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 import java.util.Enumeration;
 
-public class Arduino implements SerialPortEventListener{
-    //Ports
+public class Arduino implements SerialPortEventListener {
+
+    /**
+     *
+     *          //Ports
+     *
+     */
     private String[] portList;
     private Enumeration searchList;
-    private int bauldRate;    
+    private int bauldRate;
     private String port;
-    
-    //Bauld Rates
+
+    /**
+     *
+     * Bauld Rates
+     *
+     */
     public static int BR_300 = 300;
     public static int BR_1200 = 1200;
     public static int BR_2400 = 2400;
@@ -25,53 +33,100 @@ public class Arduino implements SerialPortEventListener{
     public static int BR_115200 = 115200;
     public static int BR_230400 = 230400;
     public static int BR_250000 = 250000;
-    
-    public Arduino(){
-        if(bauldRate == 0) this.bauldRate = BR_57600;
-    }
-    
-    public Arduino(String port){
-        if(bauldRate == 0){
+
+    /**
+     *
+     * Construtors
+     *
+     */
+    public Arduino() {
+        if (bauldRate == 0) {
             this.bauldRate = BR_57600;
-        }else{
+        }
+    }
+
+    public Arduino(String port) {
+        if (bauldRate == 0) {
+            this.bauldRate = BR_57600;
+        } else {
             this.bauldRate = bauldRate;
         }
     }
-    
-    public Arduino(String port, int bauldRate){
+
+    public Arduino(String port, int bauldRate) {
         this.bauldRate = bauldRate;
         this.port = port;
     }
-    
-    public void connect(String port, int bauldRate){
-    
+
+    /**
+     *
+     * Conection
+     *
+     */
+    public void connect(String port, int bauldRate) {
+        
     }
-    
-    public void digitalWrite(){System.out.println("Unimplemented Method");}
-    public void digitalRead(){System.out.println("Unimplemented Method");}
-    public void analogWrite(){System.out.println("Unimplemented Method");}
-    public void analogRead(){System.out.println("Unimplemented Method");}
-    
-    public String[] getPortList(){
+
+    /**
+     *
+     * Digital input output
+     *
+     */
+    public void digitalWrite() {
+        System.out.println("Unimplemented Method");
+    }
+
+    public void digitalRead() {
+        System.out.println("Unimplemented Method");
+    }
+
+    /**
+     *
+     * Analog input output
+     *
+     */
+    public void analogWrite() {
+        System.out.println("Unimplemented Method");
+    }
+
+    public void analogRead() {
+        System.out.println("Unimplemented Method");
+    }
+
+    /**
+     *
+     * Getters Setters
+     *
+     */
+    public void setPort(String port) {
+        this.port = port;
+    }
+
+    public String[] getPortList() {
         int i = 0;
         searchList = CommPortIdentifier.getPortIdentifiers();
         portList = new String[10];
-        
-        while(searchList.hasMoreElements()){
+
+        while (searchList.hasMoreElements()) {
             CommPortIdentifier atualPort = (CommPortIdentifier) searchList.nextElement();
             portList[i] = atualPort.getName();
             i++;
         }
         return portList;
     }
-    
-    public String toString(){
-        return "[Port: "+port+" Bauld Rate: "+bauldRate+"]";
+
+    /**
+     *
+     * Auxiliar methods
+     *
+     */
+    public String toString() {
+        return "[Port: " + port + " Bauld Rate: " + bauldRate + "]";
     }
-    
+
     @Override
     public void serialEvent(SerialPortEvent spe) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
