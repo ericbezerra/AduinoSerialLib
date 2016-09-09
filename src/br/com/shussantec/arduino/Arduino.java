@@ -36,6 +36,16 @@ public class Arduino implements SerialPortEventListener {
 
     /**
      *
+     * PinMode Configuration
+     *
+     */
+    public static int HIGH;
+    public static int LOW;
+    public static int OUTPUT;
+    public static int INPUT;
+    
+    /**
+     *
      * Construtors
      *
      */
@@ -64,7 +74,11 @@ public class Arduino implements SerialPortEventListener {
      *
      */
     public void connect(String port, int bauldRate) {
-        
+        this.setPort(port);
+    }
+    
+    public void pinMode(int pin, int mode){
+    
     }
 
     /**
@@ -72,12 +86,14 @@ public class Arduino implements SerialPortEventListener {
      * Digital input output
      *
      */
-    public void digitalWrite() {
-        System.out.println("Unimplemented Method");
+    public void digitalWrite(int pin, String input) {
+        System.out.println("Unimplemented Method - digitalWrite");
     }
 
-    public void digitalRead() {
-        System.out.println("Unimplemented Method");
+    public String digitalRead(int pin) {
+        String output = null;
+        System.out.println("Unimplemented Method - digitalRead");
+        return output;
     }
 
     /**
@@ -85,12 +101,14 @@ public class Arduino implements SerialPortEventListener {
      * Analog input output
      *
      */
-    public void analogWrite() {
-        System.out.println("Unimplemented Method");
+    public void analogWrite(int pin, String input) {
+        System.out.println("Unimplemented Method - analogWrite");
     }
 
-    public void analogRead() {
-        System.out.println("Unimplemented Method");
+    public String analogRead(int pin) {
+        String output = null;
+        System.out.println("Unimplemented Method - analogRead");
+        return output;
     }
 
     /**
@@ -108,13 +126,17 @@ public class Arduino implements SerialPortEventListener {
         portList = new String[10];
 
         while (searchList.hasMoreElements()) {
-            CommPortIdentifier atualPort = (CommPortIdentifier) searchList.nextElement();
+            CommPortIdentifier atualPort = 
+                    (CommPortIdentifier) searchList.nextElement();
             portList[i] = atualPort.getName();
             i++;
         }
         return portList;
     }
 
+    public int getBauldRate(){
+        return this.bauldRate;
+    }
     /**
      *
      * Auxiliar methods
@@ -126,7 +148,9 @@ public class Arduino implements SerialPortEventListener {
 
     @Override
     public void serialEvent(SerialPortEvent spe) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new 
+        UnsupportedOperationException("Not supported yet."); 
+//To change body of generated methods, choose Tools | Templates.
     }
 
 }

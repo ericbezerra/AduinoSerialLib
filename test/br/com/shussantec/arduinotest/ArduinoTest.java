@@ -1,15 +1,24 @@
 package br.com.shussantec.arduinotest;
 
-import br.com.shussantec.arduino.Arduino;
-import javax.swing.JOptionPane;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class ArduinoTest {
+public class ArduinoTest extends Application{
 
+    
     public static void main(String[] args) {
-        Arduino arduino = new Arduino();
-        String port = arduino.getPortList()[0];
-        arduino.connect(port, Arduino.BR_57600);
-        JOptionPane.showMessageDialog(null, arduino.toString(), "Arduino Log", JOptionPane.PLAIN_MESSAGE);
+        Application.launch(ArduinoTest.class, args);
+    }
+    
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("Comunication.fxml"));
         
+        stage.setTitle("Arduino Comunication");
+        stage.setScene(new Scene(root, 600, 300));
+        stage.show();
     }
 }
