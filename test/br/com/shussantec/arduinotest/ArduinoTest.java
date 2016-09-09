@@ -1,7 +1,7 @@
 
-package javaapplication1Test;
+package br.com.shussantec.arduinotest;
 
-import javaapplication1.Arduino;
+import br.com.shussantec.arduino.Arduino;
 
 public class ArduinoTest {
     public static void main(String[] args) {

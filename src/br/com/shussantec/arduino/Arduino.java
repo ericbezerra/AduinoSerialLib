@@ -1,5 +1,5 @@
 
-package javaapplication1;
+package br.com.shussantec.arduino;
 
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPortEvent;
@@ -10,7 +10,7 @@ public class Arduino implements SerialPortEventListener{
     //Ports
     private String[] portList;
     private Enumeration searchList;
-    private int bauldRate;
+    private int bauldRate;    
     private String port;
     
     //Bauld Rates
