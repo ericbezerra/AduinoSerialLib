@@ -3,6 +3,7 @@ package br.com.shussantec.arduino;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 public class Arduino implements SerialPortEventListener {
@@ -12,7 +13,7 @@ public class Arduino implements SerialPortEventListener {
      *          //Ports
      *
      */
-    private String[] portList;
+    private ArrayList<String> portList;
     private Enumeration searchList;
     private int bauldRate;
     private String port;
@@ -120,22 +121,26 @@ public class Arduino implements SerialPortEventListener {
         this.port = port;
     }
 
-    public String[] getPortList() {
+    public ArrayList<String> getPortList() {
         int i = 0;
         searchList = CommPortIdentifier.getPortIdentifiers();
-        portList = new String[10];
+        portList = new ArrayList<>();
 
         while (searchList.hasMoreElements()) {
             CommPortIdentifier atualPort = 
                     (CommPortIdentifier) searchList.nextElement();
-            portList[i] = atualPort.getName();
-            i++;
+            portList.add(atualPort.getName());
         }
         return portList;
     }
 
     public int getBauldRate(){
         return this.bauldRate;
+    }
+    
+    public int[] getBauldRateList(){
+        int[] brlist = {300,1200,2400,4800,9600,19200,38400,57600,115200,230400,250000};
+        return brlist;
     }
     /**
      *
