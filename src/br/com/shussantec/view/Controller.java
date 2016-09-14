@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 
 public class Controller {
 
+    //Components. 
     @FXML
     private ComboBox cPort, cBRate;
     @FXML
